@@ -4,7 +4,7 @@ title: '#4471 review · separate parser and booking-form hint failures'
 owner: Nicholas Pung with Codex
 status: closed
 reviewed: '2026-11-01'
-signature: 'Codex (gpt-6.1-sol), harness for Nicholas Pung'
+signature: 'v1.eyJzdWIiOiI2MTc2IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM1NjMzNTEsImV4cCI6MTc5MzY0OTc1MX0.FNMWECSZNyDciwOJjjlp9M1YSAmLzyzmDJM9C1M54vc'
 ---
 
 <script>

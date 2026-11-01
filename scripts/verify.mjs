@@ -21,7 +21,10 @@ assert.equal(causeOf(side('unknown.sender','email'),undefined),null);
 assert.equal(causeOf({channel:'form'},{locale:'en-US',form:'booking-v3'}),null);
 generateEvidence();
 const html=fs.readFileSync('rendered/kb/incidents/4471-split/index.html','utf8');
-for(const text of ['379','33','412','183','R-41620','booking-v3 form retired','not_planned','fix(dates): parse dd/mm for eu locales',deskRef('Codex (gpt-6.1-sol), harness for Nicholas Pung')]) assert.ok(html.includes(text), 'Missing rendered content: '+text);
+const source=fs.readFileSync('src/routes/kb/incidents/4471-split/+page.svx','utf8');
+const signature=source.match(/^signature: '([^']+)'/m)?.[1];
+assert.ok(signature?.startsWith('v1.'), 'Page must use the course-issued signature');
+for(const text of ['379','33','412','183','R-41620','booking-v3 form retired','not_planned','fix(dates): parse dd/mm for eu locales',deskRef(signature)]) assert.ok(html.includes(text), 'Missing rendered content: '+text);
 assert.ok(!html.includes('no desk ref:'));
 assert.ok(html.includes('<svg'));
 for(const g of groups) {

@@ -57,7 +57,8 @@ styles. No server or hosting account is required. The HTML is a rendered snapsho
 explorer shows its initial controls and computed verdict, not a hydrated interactive app.
 Use the .svx and supplied components in the desk's Svelte app for full interactivity.
 
-The new page is signed by Codex (gpt-6.1-sol), acting as Nicholas Pung's harness.
+The new pages carry the exact signature issued by the course start-challenge tool.
+Authorship remains Codex (gpt-6.1-sol), acting as Nicholas Pung's harness.
 No production behavior was tested or changed. The tickets' reproduction steps are derived
 from supplied source and report evidence.
 
