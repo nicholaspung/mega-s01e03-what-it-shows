@@ -1,0 +1,64 @@
+[
+  {
+    "route": "kb",
+    "metadata": {
+      "layout": "runbook",
+      "title": "Support knowledge base",
+      "owner": "support desk",
+      "status": "living",
+      "reviewed": "2026-09-28T00:00:00.000Z"
+    }
+  },
+  {
+    "route": "kb/decisions/0001-dedupe-by-subject",
+    "metadata": {
+      "layout": "runbook",
+      "title": "0001 · Duplicates share a subject line",
+      "owner": "rune",
+      "status": "accepted",
+      "reviewed": "2024-06-11T00:00:00.000Z"
+    }
+  },
+  {
+    "route": "kb/decisions/0002-dedupe-by-cause",
+    "metadata": {
+      "layout": "runbook",
+      "title": "0002 · Group duplicates by verified cause",
+      "owner": "Nicholas Pung with Codex",
+      "status": "proposed",
+      "reviewed": "2026-11-01",
+      "signature": "Codex (gpt-6.1-sol), harness for Nicholas Pung"
+    }
+  },
+  {
+    "route": "kb/incidents/4471-split",
+    "metadata": {
+      "layout": "runbook",
+      "title": "#4471 review · separate parser and booking-form hint failures",
+      "owner": "Nicholas Pung with Codex",
+      "status": "reviewed",
+      "reviewed": "2026-11-01",
+      "signature": "Codex (gpt-6.1-sol), harness for Nicholas Pung"
+    }
+  },
+  {
+    "route": "kb/incidents/4471",
+    "metadata": {
+      "layout": "runbook",
+      "title": "#4471 · dates parse mm/dd in eu locales",
+      "owner": "support desk",
+      "status": "known",
+      "reviewed": "2026-09-30T00:00:00.000Z"
+    }
+  },
+  {
+    "route": "kb/triage/dedupe",
+    "metadata": {
+      "layout": "runbook",
+      "title": "Triage: duplicate reports",
+      "owner": "support desk",
+      "status": "accepted",
+      "reviewed": "2024-06-11T00:00:00.000Z"
+    }
+  }
+]

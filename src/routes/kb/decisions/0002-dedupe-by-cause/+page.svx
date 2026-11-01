@@ -1,0 +1,33 @@
+---
+layout: runbook
+title: '0002 · Group duplicates by verified cause'
+owner: Nicholas Pung with Codex
+status: proposed
+reviewed: '2026-11-01'
+signature: 'Codex (gpt-6.1-sol), harness for Nicholas Pung'
+---
+
+<script>
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+## Context
+
+[Review of #4471](/kb/incidents/4471-split) found distinct parser and booking-form hint failures merged together.
+The old [decision 0001](/kb/decisions/0001-dedupe-by-subject) remains an immutable historical record.
+This proposal would supersede it after the support desk approves it.
+
+## Proposed decision
+
+Read the report, resolve the tenant's locale and form version, and identify the failure path using channel and reproducible evidence.
+Merge only when the reports share a verified cause; differing subjects may still describe the same cause.
+A matching subject alone is insufficient. Intake tags and browser locale are clues, not the cause classifier.
+Unknown tenants and uncertain failures remain separate for investigation rather than being merged by default.
+
+## Consequences
+
+Triage takes more reading but preserves separate engineering work and accurate per-cause impact.
+Keep received and merged timestamps separate, count report IDs once across overlapping exports, and preserve evidence and uncertainty.
+Review the decision against future rendered tables and reproduction results, rather than allowing accepted prose to overrule current evidence.
+
+<RenderStamp {signature} />

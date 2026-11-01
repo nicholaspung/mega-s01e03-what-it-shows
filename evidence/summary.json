@@ -1,0 +1,41 @@
+{
+  "rawRows": 427,
+  "uniqueReports": 412,
+  "groups": [
+    {
+      "cause": "parser",
+      "taggedAs": {
+        "parser": 356,
+        "hint": 23
+      },
+      "tenants": 11,
+      "firstSeen": "2026-04-01",
+      "lastSeen": "2026-10-04",
+      "mergedInto": [
+        4471
+      ],
+      "count": 379
+    },
+    {
+      "cause": "hint",
+      "taggedAs": {
+        "parser": 15,
+        "hint": 18
+      },
+      "tenants": 3,
+      "firstSeen": "2026-04-17",
+      "lastSeen": "2026-09-22",
+      "mergedInto": [
+        4471
+      ],
+      "count": 33
+    }
+  ],
+  "oneDayMove": [
+    "R-41202",
+    "R-41209",
+    "R-41236",
+    "R-41344",
+    "R-41620"
+  ]
+}

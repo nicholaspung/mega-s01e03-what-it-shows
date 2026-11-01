@@ -1,0 +1,75 @@
+---
+layout: runbook
+title: '#4471 review · separate parser and booking-form hint failures'
+owner: Nicholas Pung with Codex
+status: reviewed
+reviewed: '2026-11-01'
+signature: 'Codex (gpt-6.1-sol), harness for Nicholas Pung'
+---
+
+<script>
+  import SplitFindings from '#lib/kb/SplitFindings.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import DedupeExplorer from '#lib/kb/DedupeExplorer.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+The [old incident page](/kb/incidents/4471) says “One issue, one fix queued.”
+The rendered cause table contradicts that claim. Reports merged into #4471 cover two independent failures.
+A parser fix alone will leave the booking-form hint failure open.
+This review uses the 4 October export, not a live production feed; it makes no claim that either fix has shipped.
+
+## Tickets and counts
+
+<SplitFindings />
+
+### Parser: month-first interpretation of day-first tenant dates
+
+The shared parser treats dates as month/day even when the tenant writes day/month.
+This affects app and email intake, plus booking-v2 form reports, across the tenant directory.
+For example, R-41200 from harbour.dental reports 7 April turning into 4 July.
+Preserve the tenant's date order when parsing and test ambiguous dates in both directions.
+The five one-day descriptions remain footnoted in this group rather than becoming a third ticket on symptoms alone.
+
+### Hint: booking-v3 prints the wrong input order
+
+For day-first tenants, booking-v3 prints `MM/DD/YYYY` while its form reads the tenant's day-first order.
+A person following that hint supplies a month-first date which is interpreted the other way around.
+Affected form reports belong to alder.physio (`de-DE`), copper.studio (`es-ES`), and pale.harbour (`pt-PT`).
+For example, R-41230 is copper.studio/form: its browser locale and intake parser tag do not identify its cause.
+Make the hint agree with the actual parser and tenant locale; verify the hint separately from the shared parser.
+
+## Count causes, not intake guesses
+
+Use `uniqueById`, then filter `mergedInto === 4471`, resolve each tenant from the directory, and run `causeOf`.
+That function asks the platform for the tenant's date order; do not substitute a hand-maintained country list.
+Neither a matching subject nor a browser locale proves two reports share a cause.
+The CSV in `evidence/report-classification.csv` records every unique ID and its assigned cause.
+The issue drafts contain each group's complete ID list, counts, examples, and acceptance checks.
+
+## The desk's timeline
+
+<QueueTimeline ticket={4471} />
+
+Reports arrived before the desk's bulk merge and continued afterward. The desk's July merge activity is not an onset date.
+Keep received and merged timestamps separate when judging trends, and do not interpret “known” as “fixed”.
+
+## Replace the old dedupe policy
+
+The [accepted decision 0001](/kb/decisions/0001-dedupe-by-subject) is historical and remains unedited.
+Its subject-only rule can merge different causes and separate reports of the same cause.
+The [replacement proposal 0002](/kb/decisions/0002-dedupe-by-cause) groups by verified failure path instead.
+The old triage page was reviewed in 2024; its prose is stale even though its live component already compares causes.
+The explorer below demonstrates both directions of the mismatch. Missing tenant information must stay unplaced until investigated.
+
+<DedupeExplorer />
+
+## Desk actions
+
+Keep one engineering ticket for each cause, with a report count and evidence.
+Route future reports using tenant locale, form version, and channel; read the body to confirm the failure path.
+Keep unknown cases separate, record the uncertainty, and ask for the missing tenant or reproduction detail.
+Recompute the groups when a new export arrives, and verify both fixes before marking the incident resolved.
+The new decision is a proposal for desk approval, not a claim that the desk has adopted it.
+
+<RenderStamp {signature} />
