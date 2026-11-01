@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 review · separate parser and booking-form hint failures'
 owner: Nicholas Pung with Codex
-status: reviewed
+status: closed
 reviewed: '2026-11-01'
 signature: 'Codex (gpt-6.1-sol), harness for Nicholas Pung'
 ---
@@ -16,8 +16,10 @@ signature: 'Codex (gpt-6.1-sol), harness for Nicholas Pung'
 
 The [old incident page](/kb/incidents/4471) says “One issue, one fix queued.”
 The rendered cause table contradicts that claim. Reports merged into #4471 cover two independent failures.
-A parser fix alone will leave the booking-form hint failure open.
-This review uses the 4 October export, not a live production feed; it makes no claim that either fix has shipped.
+A parser fix alone does not correct the booking-form hint failure.
+Counts below use the 4 October export. The later course engineering update reports #4471 closed on 5 October:
+the parser was fixed, while the hint was closed as **won’t fix** because **booking-v3 was retired**.
+Both outcomes appear in the computed disposition table; no production deployment was tested by this review.
 
 ## Tickets and counts
 
@@ -37,7 +39,8 @@ For day-first tenants, booking-v3 prints `MM/DD/YYYY` while its form reads the t
 A person following that hint supplies a month-first date which is interpreted the other way around.
 Affected form reports belong to alder.physio (`de-DE`), copper.studio (`es-ES`), and pale.harbour (`pt-PT`).
 For example, R-41230 is copper.studio/form: its browser locale and intake parser tag do not identify its cause.
-Make the hint agree with the actual parser and tenant locale; verify the hint separately from the shared parser.
+A hint correction would need to agree with the actual parser and tenant locale. Engineering instead retired booking-v3,
+so the hint ticket is closed as **not planned**, not as a shipped fix.
 
 ## Count causes, not intake guesses
 
@@ -69,7 +72,8 @@ The explorer below demonstrates both directions of the mismatch. Missing tenant 
 Keep one engineering ticket for each cause, with a report count and evidence.
 Route future reports using tenant locale, form version, and channel; read the body to confirm the failure path.
 Keep unknown cases separate, record the uncertainty, and ask for the missing tenant or reproduction detail.
-Recompute the groups when a new export arrives, and verify both fixes before marking the incident resolved.
+Recompute the groups when a new export arrives. Keep the two closure reasons distinct: the parser fix is completed;
+the retired form’s hint is not planned. Do not claim that both bugs were fixed because the parent ticket is closed.
 The new decision is a proposal for desk approval, not a claim that the desk has adopted it.
 
 <RenderStamp {signature} />

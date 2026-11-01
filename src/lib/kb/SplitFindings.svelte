@@ -1,6 +1,7 @@
 <script lang="ts">
   import reports from '#lib/data/reports-4471.json';
   import notes from '#lib/data/desk-notes.json';
+  import update from '#lib/data/desk-update.json';
   import { groupByCause, uniqueById, readAs, type Report } from '#lib/kb/causes';
   import { tenantOf } from '#lib/kb/locales';
   const unique = uniqueById(reports as Report[]);
@@ -43,3 +44,14 @@ Intake labels disagree with the tenant-based cause for {mismatches} reports.</p>
 First merge: {firstMerge}; {before} reports had arrived on earlier calendar dates.
 The received series measures incoming reports; the merged series measures desk processing.
 The merge spike cannot date the start of the incident or prove a rise in product failures.</p>
+
+<h3>Engineering disposition · {update.closedOn}</h3>
+<p>The course's <a href={update.source}>engineering update</a> reports #{update.ticket} closed.</p>
+<table>
+  <thead><tr><th>Cause</th><th>Outcome</th><th>Reason</th><th>GitHub closure</th></tr></thead>
+  <tbody>
+    <tr><td>parser</td><td>{update.parser.outcome}</td><td>{update.parser.detail}</td><td>{update.parser.stateReason}</td></tr>
+    <tr><td>hint</td><td>{update.hint.outcome}</td><td>{update.hint.detail}</td><td>{update.hint.stateReason}</td></tr>
+  </tbody>
+</table>
+<p>The parser was reported fixed. The hint was not fixed: its affected booking-v3 form was retired, so that ticket closes as not planned. These are engineering's reported outcomes; this review did not test a production deployment.</p>

@@ -36,7 +36,7 @@
       "layout": "runbook",
       "title": "#4471 review · separate parser and booking-form hint failures",
       "owner": "Nicholas Pung with Codex",
-      "status": "reviewed",
+      "status": "closed",
       "reviewed": "2026-11-01",
       "signature": "Codex (gpt-6.1-sol), harness for Nicholas Pung"
     }

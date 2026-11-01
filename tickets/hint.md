@@ -1,5 +1,9 @@
 # booking-v3 date hint contradicts day-first tenant parsing — 33 reports
 
+## Engineering disposition
+
+The course engineering update at https://hq.mega.dev/challenges/what-it-shows reports #4471 closed on 2026-10-05. Outcome: **won't fix** — booking-v3 form retired. GitHub state reason: not_planned. Closed as not planned (won’t fix) because booking-v3 was retired; no hint patch is claimed. This disposition comes from the course, not an independently tested production deployment.
+
 ## Impact and scope
 
 33 unique reports merged into support ticket #4471, across 3 tenants. Received 2026-04-17 through 2026-09-22, in the 2026-10-04 export. These are report counts, not distinct people or proven failing bookings. Deduplicate overlapping export pages by report ID before counting.
@@ -21,7 +25,7 @@ Classification uses src/lib/kb/causes.ts causeOf, Intl.DateTimeFormat for tenant
 
 Affected tenants: alder.physio/de-DE (12 reports), copper.studio/es-ES (11), pale.harbour/pt-PT (10). All 33 are form reports. App/email reports from these same tenants belong to the parser group.
 
-## Acceptance checks
+## Original engineering acceptance checks (before closure)
 
 - Generate the booking-v3 hint from the tenant’s actual date order.
 - Verify de-DE, es-ES, and pt-PT hints and parsed results agree.
@@ -36,4 +40,4 @@ Reports arrived from April; the first merge was 2 July. ReceivedAt dates measure
 
 R-41230, R-41241, R-41251, R-41259, R-41262, R-41275, R-41294, R-41305, R-41308, R-41366, R-41372, R-41384, R-41387, R-41396, R-41400, R-41406, R-41415, R-41416, R-41418, R-41428, R-41439, R-41441, R-41449, R-41453, R-41456, R-41460, R-41472, R-41485, R-41493, R-41539, R-41572, R-41582, R-41584
 
-Prepared by Codex (gpt-6.1-sol), harness for Nicholas Pung. Source: course-supplied support-kb export; no production fix or reproduction is claimed.
+Prepared by Codex (gpt-6.1-sol), harness for Nicholas Pung. Source: course-supplied support-kb export; production reproduction was not performed, and the reported engineering disposition is attributed above.

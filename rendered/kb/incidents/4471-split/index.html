@@ -25,19 +25,13 @@
   footer.svelte-e2jw2j { margin-top: 3rem; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--line); padding-top: 1rem; }
 
 
+  .try.svelte-gq0h2h { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+  fieldset.svelte-gq0h2h { display: grid; gap: 0.4rem; border: 1px solid var(--line); border-radius: 6px; }
+  .verdict.svelte-gq0h2h { grid-column: 1 / -1; margin: 0; font-weight: 600; color: var(--muted); }
+  .dup.svelte-gq0h2h { color: var(--accent); font-weight: 600; }
+
+
   .stale.svelte-tbc1ha { color: var(--warn); font-weight: 600; }
-
-
-  .stamp.svelte-1280m42 { margin: 2rem 0 0; font: 0.85rem var(--mono); color: var(--muted); }
-  .stamp.svelte-1280m42 b:where(.svelte-1280m42) { color: var(--accent); letter-spacing: 0.04em; }
-  .missing.svelte-1280m42 { color: var(--warn); }
-
-
-  .sum.svelte-12oyimm { font-size: 1.1rem; }
-  .tags.svelte-12oyimm { color: var(--muted); font-size: 0.85em; }
-  .note.svelte-12oyimm { color: var(--muted); font-size: 0.85em; }
-  .wrong.svelte-12oyimm td:where(.svelte-12oyimm) { background: var(--warn-bg); }
-  .wrong.svelte-12oyimm td:where(.svelte-12oyimm):last-child { color: var(--warn); font-weight: 600; }
 
 
   svg.svelte-18a6qal { width: 100%; max-width: 640px; }
@@ -50,25 +44,33 @@
   .key.merged.svelte-18a6qal { background: var(--accent); }
 
 
+  .stamp.svelte-1280m42 { margin: 2rem 0 0; font: 0.85rem var(--mono); color: var(--muted); }
+  .stamp.svelte-1280m42 b:where(.svelte-1280m42) { color: var(--accent); letter-spacing: 0.04em; }
+  .missing.svelte-1280m42 { color: var(--warn); }
+
+
   aside.svelte-17bri61 { border-left: 4px solid var(--accent); padding: 0.5rem 1rem; margin: 1rem 0; background: var(--note-bg); }
   aside.warn.svelte-17bri61 { border-color: var(--warn); background: var(--warn-bg); }
 
 
-  .try.svelte-gq0h2h { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
-  fieldset.svelte-gq0h2h { display: grid; gap: 0.4rem; border: 1px solid var(--line); border-radius: 6px; }
-  .verdict.svelte-gq0h2h { grid-column: 1 / -1; margin: 0; font-weight: 600; color: var(--muted); }
-  .dup.svelte-gq0h2h { color: var(--accent); font-weight: 600; }
-</style></head><body><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 review · separate parser and booking-form hint failures</h1> <p class="meta svelte-e2jw2j"><span>owner <b>Nicholas Pung with Codex</b></span> <span class="status reviewed svelte-e2jw2j">reviewed</span> <span class="svelte-e2jw2j">reviewed 2026-11-01 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p>The <a href="/kb/incidents/4471">old incident page</a> says “One issue, one fix queued.”
+  .sum.svelte-12oyimm { font-size: 1.1rem; }
+  .tags.svelte-12oyimm { color: var(--muted); font-size: 0.85em; }
+  .note.svelte-12oyimm { color: var(--muted); font-size: 0.85em; }
+  .wrong.svelte-12oyimm td:where(.svelte-12oyimm) { background: var(--warn-bg); }
+  .wrong.svelte-12oyimm td:where(.svelte-12oyimm):last-child { color: var(--warn); font-weight: 600; }
+</style></head><body><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 review · separate parser and booking-form hint failures</h1> <p class="meta svelte-e2jw2j"><span>owner <b>Nicholas Pung with Codex</b></span> <span class="status closed svelte-e2jw2j">closed</span> <span class="svelte-e2jw2j">reviewed 2026-11-01 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p>The <a href="/kb/incidents/4471">old incident page</a> says “One issue, one fix queued.”
 The rendered cause table contradicts that claim. Reports merged into #4471 cover two independent failures.
-A parser fix alone will leave the booking-form hint failure open.
-This review uses the 4 October export, not a live production feed; it makes no claim that either fix has shipped.</p> <h2>Tickets and counts</h2> <p>427 export rows → <strong>412 unique reports</strong> → 412 merged into #4471.
+A parser fix alone does not correct the booking-form hint failure.
+Counts below use the 4 October export. The later course engineering update reports #4471 closed on 5 October:
+the parser was fixed, while the hint was closed as <strong>won’t fix</strong> because <strong>booking-v3 was retired</strong>.
+Both outcomes appear in the computed disposition table; no production deployment was tested by this review.</p> <h2>Tickets and counts</h2> <p>427 export rows → <strong>412 unique reports</strong> → 412 merged into #4471.
 The export repeats 15 IDs at page boundaries; count each ID once.
 Intake labels disagree with the tenant-based cause for 38 reports.</p> <table><thead><tr><th>Cause / ticket draft</th><th>Reports</th><th>Tenants</th><th>Received</th><th>Intake tags</th></tr></thead><tbody><!--[--><tr><td><a href="https://github.com/nicholaspung/mega-s01e03-what-it-shows/issues/1">parser</a></td><td>379</td><td>11</td><td>2026-04-01 → 2026-10-04</td><td>parser ×356 · hint ×23</td></tr><tr><td><a href="https://github.com/nicholaspung/mega-s01e03-what-it-shows/issues/2">hint</a></td><td>33</td><td>3</td><td>2026-04-17 → 2026-09-22</td><td>parser ×15 · hint ×18</td></tr><!--]--></tbody></table> <!--[--><!--[0--><p>5 reports read as a one-day move and remain counted under <code>parser</code> by tenant:
       R-41202, R-41209, R-41236, R-41344, R-41620.
       These symptoms warrant checking timestamps during investigation, but the export does not establish a separate timezone cause.</p><!--]--><!--[-1--><!--]--><!--]--> <p>First report: 2026-04-01.
 First merge: 2026-07-02; 183 reports had arrived on earlier calendar dates.
 The received series measures incoming reports; the merged series measures desk processing.
-The merge spike cannot date the start of the incident or prove a rise in product failures.</p><!----> <h3>Parser: month-first interpretation of day-first tenant dates</h3> <p>The shared parser treats dates as month/day even when the tenant writes day/month.
+The merge spike cannot date the start of the incident or prove a rise in product failures.</p> <h3>Engineering disposition · 2026-10-05</h3> <p>The course's <a href="https://hq.mega.dev/challenges/what-it-shows">engineering update</a> reports #4471 closed.</p> <table><thead><tr><th>Cause</th><th>Outcome</th><th>Reason</th><th>GitHub closure</th></tr></thead><tbody><tr><td>parser</td><td>fixed</td><td>fix(dates): parse dd/mm for eu locales</td><td>completed</td></tr><tr><td>hint</td><td>won't fix</td><td>booking-v3 form retired</td><td>not_planned</td></tr></tbody></table> <p>The parser was reported fixed. The hint was not fixed: its affected booking-v3 form was retired, so that ticket closes as not planned. These are engineering's reported outcomes; this review did not test a production deployment.</p><!----> <h3>Parser: month-first interpretation of day-first tenant dates</h3> <p>The shared parser treats dates as month/day even when the tenant writes day/month.
 This affects app and email intake, plus booking-v2 form reports, across the tenant directory.
 For example, R-41200 from harbour.dental reports 7 April turning into 4 July.
 Preserve the tenant’s date order when parsing and test ambiguous dates in both directions.
@@ -76,7 +78,8 @@ The five one-day descriptions remain footnoted in this group rather than becomin
 A person following that hint supplies a month-first date which is interpreted the other way around.
 Affected form reports belong to alder.physio (<code>de-DE</code>), copper.studio (<code>es-ES</code>), and pale.harbour (<code>pt-PT</code>).
 For example, R-41230 is copper.studio/form: its browser locale and intake parser tag do not identify its cause.
-Make the hint agree with the actual parser and tenant locale; verify the hint separately from the shared parser.</p> <h2>Count causes, not intake guesses</h2> <p>Use <code>uniqueById</code>, then filter <code>mergedInto === 4471</code>, resolve each tenant from the directory, and run <code>causeOf</code>.
+A hint correction would need to agree with the actual parser and tenant locale. Engineering instead retired booking-v3,
+so the hint ticket is closed as <strong>not planned</strong>, not as a shipped fix.</p> <h2>Count causes, not intake guesses</h2> <p>Use <code>uniqueById</code>, then filter <code>mergedInto === 4471</code>, resolve each tenant from the directory, and run <code>causeOf</code>.
 That function asks the platform for the tenant’s date order; do not substitute a hand-maintained country list.
 Neither a matching subject nor a browser locale proves two reports share a cause.
 The CSV in <code>evidence/report-classification.csv</code> records every unique ID and its assigned cause.
@@ -88,5 +91,6 @@ The old triage page was reviewed in 2024; its prose is stale even though its liv
 The explorer below demonstrates both directions of the mismatch. Missing tenant information must stay unplaced until investigated.</p> <div class="try svelte-gq0h2h"><!--[--><fieldset class="svelte-gq0h2h"><legend>report A</legend> <select aria-label="tenant"><!--[--><option selected="">alder.physio</option><option>copper.studio</option><option>harbour.dental</option><option>kettle.books</option><option>lantern.row</option><option>long.table</option><option>morrow.tax</option><option>nine.lanterns</option><option>pale.harbour</option><option>ridge.clinic</option><option>stone.and.sons</option><!--]--></select> <select aria-label="channel"><!--[--><option>app</option><option>email</option><option selected="">form</option><!--]--></select> <input value="Booking on the wrong date" aria-label="subject"/> <code>hint</code></fieldset><fieldset class="svelte-gq0h2h"><legend>report B</legend> <select aria-label="tenant"><!--[--><option>alder.physio</option><option>copper.studio</option><option>harbour.dental</option><option selected="">kettle.books</option><option>lantern.row</option><option>long.table</option><option>morrow.tax</option><option>nine.lanterns</option><option>pale.harbour</option><option>ridge.clinic</option><option>stone.and.sons</option><!--]--></select> <select aria-label="channel"><!--[--><option>app</option><option>email</option><option selected="">form</option><!--]--></select> <input value="Booking on the wrong date" aria-label="subject"/> <code>parser</code></fieldset><!--]--> <p class="verdict svelte-gq0h2h">different causes — keep apart</p></div> <table><thead><tr><th>case</th><th>same subject</th><th>same cause</th></tr></thead><tbody><!--[--><tr><td>app vs email, same tenant</td><td>no</td><td class="svelte-gq0h2h dup">yes</td></tr><tr><td>same subject, same tenant, different channel</td><td>yes</td><td class="svelte-gq0h2h">no</td></tr><tr><td>same subject, same channel, different tenant</td><td>yes</td><td class="svelte-gq0h2h">no</td></tr><tr><td>different subject, same way in</td><td>no</td><td class="svelte-gq0h2h dup">yes</td></tr><tr><td>no tenant on file</td><td>yes</td><td class="svelte-gq0h2h">no</td></tr><!--]--></tbody></table><!----> <h2>Desk actions</h2> <p>Keep one engineering ticket for each cause, with a report count and evidence.
 Route future reports using tenant locale, form version, and channel; read the body to confirm the failure path.
 Keep unknown cases separate, record the uncertainty, and ask for the missing tenant or reproduction detail.
-Recompute the groups when a new export arrives, and verify both fixes before marking the incident resolved.
+Recompute the groups when a new export arrives. Keep the two closure reasons distinct: the parser fix is completed;
+the retired form’s hint is not planned. Do not claim that both bugs were fixed because the parent ticket is closed.
 The new decision is a proposal for desk approval, not a claim that the desk has adopted it.</p> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-P6SJ-FQBH</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--></body></html>

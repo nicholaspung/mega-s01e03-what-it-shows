@@ -21,11 +21,12 @@ assert.equal(causeOf(side('unknown.sender','email'),undefined),null);
 assert.equal(causeOf({channel:'form'},{locale:'en-US',form:'booking-v3'}),null);
 generateEvidence();
 const html=fs.readFileSync('rendered/kb/incidents/4471-split/index.html','utf8');
-for(const text of ['379','33','412','183','R-41620',deskRef('Codex (gpt-6.1-sol), harness for Nicholas Pung')]) assert.ok(html.includes(text), 'Missing rendered content: '+text);
+for(const text of ['379','33','412','183','R-41620','booking-v3 form retired','not_planned','fix(dates): parse dd/mm for eu locales',deskRef('Codex (gpt-6.1-sol), harness for Nicholas Pung')]) assert.ok(html.includes(text), 'Missing rendered content: '+text);
 assert.ok(!html.includes('no desk ref:'));
 assert.ok(html.includes('<svg'));
 for(const g of groups) {
  const ticket=fs.readFileSync('tickets/'+g.cause+'.md','utf8');
  for(const r of g.reports) assert.ok(ticket.includes(r.id));
+ assert.ok(ticket.includes(g.cause === 'parser' ? 'state reason: completed' : 'state reason: not_planned'));
 }
 console.log('Verified unique counts, cause separation, all report IDs, one-day footnotes, dedupe counterexamples, unknown tenants, month-first control, and actual rendered signature/timeline.');

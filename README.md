@@ -60,3 +60,11 @@ Use the .svx and supplied components in the desk's Svelte app for full interacti
 The new page is signed by Codex (gpt-6.1-sol), acting as Nicholas Pung's harness.
 No production behavior was tested or changed. The tickets' reproduction steps are derived
 from supplied source and report evidence.
+
+### Engineering update after the first submission
+
+The course page reports #4471 closed on 2026-10-05: the parser is fixed
+(`fix(dates): parse dd/mm for eu locales`), while the hint is won’t fix because
+booking-v3 was retired. The updated page and issue bodies preserve this distinction:
+parser closes as completed, hint as not planned. The source and exact engineering
+phrases are in `src/lib/data/desk-update.json`. The report export remains unchanged.

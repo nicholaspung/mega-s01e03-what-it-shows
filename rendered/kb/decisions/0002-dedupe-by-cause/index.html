@@ -25,19 +25,13 @@
   footer.svelte-e2jw2j { margin-top: 3rem; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--line); padding-top: 1rem; }
 
 
+  .try.svelte-gq0h2h { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+  fieldset.svelte-gq0h2h { display: grid; gap: 0.4rem; border: 1px solid var(--line); border-radius: 6px; }
+  .verdict.svelte-gq0h2h { grid-column: 1 / -1; margin: 0; font-weight: 600; color: var(--muted); }
+  .dup.svelte-gq0h2h { color: var(--accent); font-weight: 600; }
+
+
   .stale.svelte-tbc1ha { color: var(--warn); font-weight: 600; }
-
-
-  .stamp.svelte-1280m42 { margin: 2rem 0 0; font: 0.85rem var(--mono); color: var(--muted); }
-  .stamp.svelte-1280m42 b:where(.svelte-1280m42) { color: var(--accent); letter-spacing: 0.04em; }
-  .missing.svelte-1280m42 { color: var(--warn); }
-
-
-  .sum.svelte-12oyimm { font-size: 1.1rem; }
-  .tags.svelte-12oyimm { color: var(--muted); font-size: 0.85em; }
-  .note.svelte-12oyimm { color: var(--muted); font-size: 0.85em; }
-  .wrong.svelte-12oyimm td:where(.svelte-12oyimm) { background: var(--warn-bg); }
-  .wrong.svelte-12oyimm td:where(.svelte-12oyimm):last-child { color: var(--warn); font-weight: 600; }
 
 
   svg.svelte-18a6qal { width: 100%; max-width: 640px; }
@@ -50,14 +44,20 @@
   .key.merged.svelte-18a6qal { background: var(--accent); }
 
 
+  .stamp.svelte-1280m42 { margin: 2rem 0 0; font: 0.85rem var(--mono); color: var(--muted); }
+  .stamp.svelte-1280m42 b:where(.svelte-1280m42) { color: var(--accent); letter-spacing: 0.04em; }
+  .missing.svelte-1280m42 { color: var(--warn); }
+
+
   aside.svelte-17bri61 { border-left: 4px solid var(--accent); padding: 0.5rem 1rem; margin: 1rem 0; background: var(--note-bg); }
   aside.warn.svelte-17bri61 { border-color: var(--warn); background: var(--warn-bg); }
 
 
-  .try.svelte-gq0h2h { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
-  fieldset.svelte-gq0h2h { display: grid; gap: 0.4rem; border: 1px solid var(--line); border-radius: 6px; }
-  .verdict.svelte-gq0h2h { grid-column: 1 / -1; margin: 0; font-weight: 600; color: var(--muted); }
-  .dup.svelte-gq0h2h { color: var(--accent); font-weight: 600; }
+  .sum.svelte-12oyimm { font-size: 1.1rem; }
+  .tags.svelte-12oyimm { color: var(--muted); font-size: 0.85em; }
+  .note.svelte-12oyimm { color: var(--muted); font-size: 0.85em; }
+  .wrong.svelte-12oyimm td:where(.svelte-12oyimm) { background: var(--warn-bg); }
+  .wrong.svelte-12oyimm td:where(.svelte-12oyimm):last-child { color: var(--warn); font-weight: 600; }
 </style></head><body><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">0002 · Group duplicates by verified cause</h1> <p class="meta svelte-e2jw2j"><span>owner <b>Nicholas Pung with Codex</b></span> <span class="status proposed svelte-e2jw2j">proposed</span> <span class="svelte-e2jw2j">reviewed 2026-11-01 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><h2>Context</h2> <p><a href="/kb/incidents/4471-split">Review of #4471</a> found distinct parser and booking-form hint failures merged together.
 The old <a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a> remains an immutable historical record.
 This proposal would supersede it after the support desk approves it.</p> <h2>Proposed decision</h2> <p>Read the report, resolve the tenant’s locale and form version, and identify the failure path using channel and reproducible evidence.
